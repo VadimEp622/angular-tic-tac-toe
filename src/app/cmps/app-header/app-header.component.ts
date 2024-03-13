@@ -11,7 +11,6 @@ import { RouterLink } from '@angular/router';
 })
 export class AppHeaderComponent {
   @Input() layout: string = 'main-layout';
-  layoutClass: string[] = ['full', this.layout]
 
 
 }

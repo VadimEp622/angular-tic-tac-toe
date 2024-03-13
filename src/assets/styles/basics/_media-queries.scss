@@ -12,13 +12,13 @@
 // 1440px - infinity
 @include for-screen(desktop) {
     // ...
-    .main-layout {
-        grid-template-columns: 20px 1fr 20px;
-    }
+    // .main-layout {
+    //     grid-template-columns: 20px 1fr 20px;
+    // }
 
-    .details-layout {
-        grid-template-columns: 73px 1fr 73px;
-    }
+    // .details-layout {
+    //     grid-template-columns: 73px 1fr 73px;
+    // }
 }
 
 /* =================== from-to =================== */
@@ -40,10 +40,10 @@
 // 0 - 1439px
 @include for-screen(null-to-desktop) {
     // ...
-    .main-layout,
-    .details-layout {
-        grid-template-columns: 5px 1fr 5px;
-    }
+    // .main-layout,
+    // .details-layout {
+    //     grid-template-columns: 5px 1fr 5px;
+    // }
 }
 
 // 375px - 1439px
