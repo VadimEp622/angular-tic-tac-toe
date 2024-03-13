@@ -1,26 +1,27 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { AboutComponent } from './pages/about/about.component';
 import { DynamicLayoutComponent } from './layout/dynamic-layout/dynamic-layout.component';
 
 // having <router-outlet> element rendered in the DOM (devtools), is OK!
 export const routes: Routes = [
     {
         path: '',
+        title: 'home',
         pathMatch: 'full',
         component: DynamicLayoutComponent,
-        children: [
-            { path: '', component: HomeComponent }
-        ]
+        loadChildren: () => import('./pages/home/home.routes').then(m => m.routes)
     },
     {
         path: 'about',
+        title: 'about',
         component: DynamicLayoutComponent,
-        children: [
-            { path: '', component: AboutComponent }
-        ]
+        loadChildren: () => import('./pages/about/about.routes').then(m => m.routes)
     },
 
-    { path: '**', redirectTo: '' }
+    { 
+        path: '**', 
+        title:'error',
+        component: DynamicLayoutComponent,
+        loadChildren: () => import('./pages/error/error.routes').then(m => m.routes)
+    }
 ];
 
