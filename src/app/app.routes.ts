@@ -1,7 +1,9 @@
 import { Routes } from '@angular/router';
 import { DynamicLayoutComponent } from './layout/dynamic-layout/dynamic-layout.component';
 
-// having <router-outlet> element rendered in the DOM (devtools), is OK!
+// INFO: Having <router-outlet></router-outlet> element rendered in the DOM (devtools), is OK!
+//  It is intended behavior.
+//  Additionally, you must take styling (flex/grid) into account, since an extra element is actually rendered into the DOM.
 export const routes: Routes = [
     {
         path: '',
