@@ -12,4 +12,7 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  // INFO: The constructor runs immediately when the class is created,
+  //  but you don't generally do anything in the constructor. (aside from inject your dependencies, as I understood - needs some research))
+  constructor(){}
 }
