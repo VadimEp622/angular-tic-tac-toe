@@ -13,6 +13,12 @@ export const routes: Routes = [
         loadChildren: () => import('./pages/home/home.routes').then(m => m.routes)
     },
     {
+        path: 'game',
+        title: 'game',
+        component: DynamicLayoutComponent,
+        loadChildren: () => import('./pages/game/game.routes').then(m => m.routes)
+    },
+    {
         path: 'about',
         title: 'about',
         component: DynamicLayoutComponent,

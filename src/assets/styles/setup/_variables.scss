@@ -102,7 +102,8 @@ $map-padding-block: (
 
 $map-padding-block-start: (
     "0": map-get($map-spacing, "0"),
-    "15": map-get($map-spacing, "15")
+    "15": map-get($map-spacing, "15"),
+    "20": map-get($map-spacing, "20")
 );
 
 $map-padding-block-end: (
