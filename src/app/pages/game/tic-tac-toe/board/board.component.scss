@@ -1,0 +1,10 @@
+:host {
+    display: flex;
+    justify-content: center;
+    padding-block: 20px;
+}
+
+.board-container {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+}

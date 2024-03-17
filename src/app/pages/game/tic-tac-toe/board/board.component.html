@@ -1,0 +1,3 @@
+<section class="board-container">
+    <tile *ngFor="let tileItem of tileList; let i = index" [tileItem]="tileItem" (click)="onTileClick(i)"></tile>
+</section>
