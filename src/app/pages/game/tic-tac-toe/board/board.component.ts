@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TileComponent } from '../tile/tile.component';
 import { NgFor } from '@angular/common';
 
@@ -15,6 +15,7 @@ export class BoardComponent implements OnInit {
   @Input() tileList!: ('X' | 'O' | null)[]
   @Input() isPlayerNext!: boolean
 
+  @Output() handleTileClick = new EventEmitter<number>();
 
   constructor() { }
 
@@ -23,7 +24,7 @@ export class BoardComponent implements OnInit {
 
   // TODO: raise event to parent using emitter
   onTileClick(idx: number) {
-    console.log('idx', idx)
+    this.handleTileClick.emit(idx)
   }
 
 }

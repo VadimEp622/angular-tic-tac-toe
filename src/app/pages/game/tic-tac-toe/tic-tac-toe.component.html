@@ -26,6 +26,7 @@
             [isGameOn]="isGameOn"
             [tileList]="tileList"
             [isPlayerNext]="isPlayerNext"
+            (handleTileClick)="doMove($event)"
         ></board>
     </ng-template>
 </section>

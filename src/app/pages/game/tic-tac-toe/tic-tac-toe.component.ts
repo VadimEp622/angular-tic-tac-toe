@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BoardComponent } from './board/board.component';
 import { NgIf } from '@angular/common';
+import { UtilService } from '../../../services/util.service';
 
 @Component({
   selector: 'tic-tac-toe',
@@ -18,29 +19,36 @@ export class TicTacToeComponent implements OnInit {
   isPlayerNext!: boolean
   tileList: ('X' | 'O' | null)[] = []
 
+  constructor(public utilService: UtilService) { }
+
 
   ngOnInit() {
     this.onNewGame()
-    if (!this.isPlayerNext) this.machineTurn()
+    // if (!this.isPlayerNext) this.machineTurn()
   }
 
 
   onNewGame() {
     this.isGameOn = true
-    this.isPlayerNext = this.getRandBool()
+    this.isPlayerNext = this.utilService.getRandBool()
     this.tileList = Array(9).fill(null)
   }
 
   onPlayerPick(player: 'X' | 'O') {
     this.player = player
+    if (!this.isPlayerNext) this.machineTurn()
   }
 
   machineTurn() {
-    return this.doMove(this.getRandomIntInclusive(0, this.getPossibleMoves().length - 1))
+    const possibleMoves = this.getPossibleMoves()
+    const possibleIdx = this.utilService.getRandomIntInclusive(0, possibleMoves.length - 1)
+    return this.doMove(possibleMoves[possibleIdx])
   }
 
   doMove(idx: number) {
-    console.log('idx', idx)
+    const possibleMoves = this.getPossibleMoves()
+    if (!possibleMoves.includes(idx)) return
+    this.tileList[idx] = this.getWhoIsNext()
 
 
     //-----------------
@@ -61,16 +69,6 @@ export class TicTacToeComponent implements OnInit {
       if (tile === null) acc.push(idx)
       return acc
     }, [] as number[])
-  }
-
-  getRandBool() {
-    return Math.round(Math.random()) === 0
-  }
-
-  getRandomIntInclusive(min: number, max: number) {
-    min = Math.ceil(min)
-    max = Math.floor(max)
-    return Math.floor(Math.random() * (max - min + 1)) + min //The maximum is inclusive and the minimum is inclusive 
   }
 
   getWhoIsNext() {
