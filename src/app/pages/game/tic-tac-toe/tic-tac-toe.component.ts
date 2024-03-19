@@ -41,8 +41,8 @@ export class TicTacToeComponent implements OnInit {
 
   machineTurn() {
     const possibleMoves = this.getPossibleMoves()
-    const possibleIdx = this.utilService.getRandomIntInclusive(0, possibleMoves.length - 1)
-    return this.doMove(possibleMoves[possibleIdx])
+    const idx = this.utilService.getRandomIntInclusive(0, possibleMoves.length - 1)
+    this.doMove(possibleMoves[idx])
   }
 
   doMove(idx: number) {
