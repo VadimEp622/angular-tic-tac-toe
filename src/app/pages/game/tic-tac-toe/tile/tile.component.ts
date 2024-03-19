@@ -9,5 +9,5 @@ import { Component, Input } from '@angular/core';
 })
 export class TileComponent {
 
-  @Input() tileItem: 'X' | 'O' | null = null;
+  @Input() tileItem!: 'X' | 'O' | null;
 }

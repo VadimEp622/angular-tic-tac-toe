@@ -5,6 +5,9 @@ $map-clr: (
         "white": white,
         "black": black
     ),
+    "transparent": (
+        "transparent-black-1": rgba(0, 0, 0, 0.75)
+    ),
     "main-gold": (
         "gold-0": #baaa51,
         "gold-1": #dbc865b8
@@ -153,4 +156,5 @@ $map-gap: (
     "5": map-get($map-spacing, "5"),
     "10": map-get($map-spacing, "10"),
     "20": map-get($map-spacing, "20"),
+    "40": map-get($map-spacing, "40")
 );

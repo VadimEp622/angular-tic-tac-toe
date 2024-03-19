@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { TileComponent } from '../tile/tile.component';
 import { NgFor } from '@angular/common';
 
@@ -11,15 +11,17 @@ import { NgFor } from '@angular/common';
   styleUrl: './board.component.scss'
 })
 export class BoardComponent implements OnInit {
-  isGameOn: boolean = false;
-  tileList: ('X' | 'O' | null)[] = [];
+  @Input() isGameOn!: boolean
+  @Input() tileList!: ('X' | 'O' | null)[]
+  @Input() isPlayerNext!: boolean
+
 
   constructor() { }
 
   ngOnInit() {
-    this.tileList = Array(9).fill(null);
   }
 
+  // TODO: raise event to parent using emitter
   onTileClick(idx: number) {
     console.log('idx', idx)
   }

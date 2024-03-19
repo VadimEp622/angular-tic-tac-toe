@@ -1,6 +1,31 @@
 <section class="tic-tac-toe pd-bl-20">
     <h2 class="text-align-center">Welcome to Tic-Tac-Toe</h2>
-    <button>New game</button>
+    <button (click)="onNewGame()">New game</button>
 
-    <board></board>
+    <section
+        *ngIf="!player; else board"
+        class="flex gap20 pd-bl-10"
+    >
+        <h3>Please pick a side:</h3>
+        <section class="flex gap10">
+            <button (click)="onPlayerPick('X')">
+                <p class="width-10">X</p>
+            </button>
+            <button (click)="onPlayerPick('O')">
+                <p class="width-10">O</p>
+            </button>
+        </section>
+    </section>
+
+    <ng-template #board>
+        <section class="pd-bl-10 flex space-between gap40">
+            <h3>You are: {{ player }}</h3>
+            <h3>Next is: {{ getWhoIsNext() }}</h3>
+        </section>
+        <board
+            [isGameOn]="isGameOn"
+            [tileList]="tileList"
+            [isPlayerNext]="isPlayerNext"
+        ></board>
+    </ng-template>
 </section>
