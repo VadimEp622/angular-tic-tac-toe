@@ -35,6 +35,7 @@ export class TicTacToeComponent implements OnInit {
     this.tileList = Array(9).fill(null)
     this.isWin = false
     this.winner = null
+    if (this.player && !this.isPlayerNext) this.machineTurn()
   }
 
   onPlayerPick(player: 'X' | 'O') {
