@@ -32,9 +32,12 @@ export class TicTacToeService {
   }
 
   machineTurn() {
-    const possibleMoves = this._getPossibleMoves()
-    const idx = this.utilService.getRandomIntInclusive(0, possibleMoves.length - 1)
-    this.doMove(possibleMoves[idx])
+    setTimeout(() => {
+      console.log("hi from machine turn with sleep");
+      const possibleMoves = this._getPossibleMoves()
+      const idx = this.utilService.getRandomIntInclusive(0, possibleMoves.length - 1)
+      this.doMove(possibleMoves[idx])
+    }, 500)
   }
 
   doMove(idx: number) {
