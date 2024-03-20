@@ -1,9 +1,9 @@
 <section class="tic-tac-toe pd-bl-20">
     <h2 class="text-align-center">Welcome to Tic-Tac-Toe</h2>
-    <button (click)="onNewGame()">New game</button>
+    <button (click)="ticTacToeService.restart()">New game</button>
 
     <section
-        *ngIf="!player; else board"
+        *ngIf="!ticTacToeService.getPlayer(); else board"
         class="flex gap20 pd-bl-10"
     >
         <h3>Please pick a side:</h3>
@@ -19,21 +19,22 @@
 
     <ng-template #board>
         <section class="pd-bl-10 flex space-between gap40">
-            <h3>You are: {{ player }}</h3>
-            <h3 *ngIf="!isWin; else whoWins">Next is: {{ getWhoIsNext() }}</h3>
+            <h3>You are: {{ ticTacToeService.getPlayer() }}</h3>
+            <h3 *ngIf="!ticTacToeService.getGame().isWin; else whoWins">Next is: {{ ticTacToeService.getWhoIsNext() }}
+            </h3>
             <ng-template #whoWins>
-                <!-- <h3>{{winner}} Wins!</h3> -->
-                <h3>{{winner === 'tie' ? 'Tie!' : (winner + ' Wins!')}}</h3>
-
-                <!-- <p>{{ dynamicData?.value ? ('Dynamic data value is equal: ' + dynamicData?.value) : 'no dynamic data'}}</p> -->
-
+                <h3>{{
+                    ticTacToeService.getGame().winner === 'tie' ?
+                    'Tie!' :
+                    (ticTacToeService.getGame().winner + ' Wins!')
+                    }}</h3>
             </ng-template>
         </section>
         <board
-            [isGameOn]="isGameOn"
-            [tileList]="tileList"
-            [isPlayerNext]="isPlayerNext"
-            (handleTileClick)="doMove($event)"
+            [isGameOn]="ticTacToeService.getGame().isGameOn"
+            [tileList]="ticTacToeService.getGame().board"
+            [isPlayerNext]="ticTacToeService.getGame().isPlayerNext"
+            (handleTileClick)="handleTileClick($event)"
         ></board>
     </ng-template>
 </section>
