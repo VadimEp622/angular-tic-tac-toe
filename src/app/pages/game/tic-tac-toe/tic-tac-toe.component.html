@@ -20,7 +20,10 @@
     <ng-template #board>
         <section class="pd-bl-10 flex space-between gap40">
             <h3>You are: {{ player }}</h3>
-            <h3>Next is: {{ getWhoIsNext() }}</h3>
+            <h3 *ngIf="!isWin; else whoWins">Next is: {{ getWhoIsNext() }}</h3>
+            <ng-template #whoWins>
+                <h3>{{winner}} Wins!</h3>
+            </ng-template>
         </section>
         <board
             [isGameOn]="isGameOn"

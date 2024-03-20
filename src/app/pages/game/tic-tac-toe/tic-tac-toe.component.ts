@@ -18,6 +18,8 @@ export class TicTacToeComponent implements OnInit {
   player: 'X' | 'O' | null = null
   isPlayerNext!: boolean
   tileList: ('X' | 'O' | null)[] = []
+  isWin: boolean = false
+  winner: 'X' | 'O' | null = null
 
   constructor(public utilService: UtilService) { }
 
@@ -32,6 +34,8 @@ export class TicTacToeComponent implements OnInit {
     this.isGameOn = true
     this.isPlayerNext = this.utilService.getRandBool()
     this.tileList = Array(9).fill(null)
+    this.isWin = false
+    this.winner = null
   }
 
   onPlayerPick(player: 'X' | 'O') {
@@ -46,22 +50,48 @@ export class TicTacToeComponent implements OnInit {
   }
 
   doMove(idx: number) {
+    if (!this.isGameOn || this.isWin) return
     const possibleMoves = this.getPossibleMoves()
     if (!possibleMoves.includes(idx)) return
+
     this.tileList[idx] = this.getWhoIsNext()
 
-
-    //-----------------
-    // TODO: check win
-    // 
-    //-----------------
+    const isWinner = this.checkWin()
+    if (isWinner) this.endGame(isWinner)
 
     this.isPlayerNext = !this.isPlayerNext
     if (!this.isPlayerNext) this.machineTurn()
   }
 
   checkWin() {
+    const possibleWins = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6]
+    ]
 
+    for (let i = 0; i < possibleWins.length; i++) {
+      const [a, b, c] = possibleWins[i]
+      if (
+        this.tileList[a] &&
+        this.tileList[a] === this.tileList[b] &&
+        this.tileList[a] === this.tileList[c]
+      ) {
+        return this.tileList[a]
+      }
+    }
+    return null
+  }
+
+  endGame(winner: 'X' | 'O') {
+    this.isWin = true
+    this.isGameOn = false
+    this.winner = winner
   }
 
   getPossibleMoves(): number[] {
