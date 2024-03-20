@@ -63,7 +63,6 @@ export class TicTacToeComponent implements OnInit {
   }
 
   checkWin() {
-    if (this.checkIsBoardFull()) return 'tie'
     const possibleWins = [
       [0, 1, 2],
       [3, 4, 5],
@@ -85,6 +84,7 @@ export class TicTacToeComponent implements OnInit {
         return this.tileList[a]
       }
     }
+    if (this.checkIsBoardFull()) return 'tie'
     return null
   }
 
