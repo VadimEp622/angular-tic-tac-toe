@@ -1,5 +1,5 @@
 import { TicTacToeService } from './../../../services/tic-tac-toe.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BoardComponent } from './board/board.component';
 import { NgIf } from '@angular/common';
 
@@ -13,13 +13,16 @@ import { NgIf } from '@angular/common';
   templateUrl: './tic-tac-toe.component.html',
   styleUrl: './tic-tac-toe.component.scss'
 })
-export class TicTacToeComponent implements OnInit {
+export class TicTacToeComponent implements OnInit, OnDestroy {
 
   constructor(public ticTacToeService: TicTacToeService) { }
 
-
   ngOnInit() {
     this.ticTacToeService.newGame()
+  }
+
+  ngOnDestroy() {
+    this.ticTacToeService.clearAllIntervals()
   }
 
   // TODO: add color pallete to scss _variables.scss for the tic-tac-toe game

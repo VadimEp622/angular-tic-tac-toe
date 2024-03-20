@@ -7,6 +7,7 @@ interface Game {
   isPlayerNext: boolean
   isWin: boolean
   winner: 'X' | 'O' | 'tie' | null
+  timeOut: NodeJS.Timeout | null
 }
 
 @Injectable({
@@ -19,25 +20,29 @@ export class TicTacToeService {
   constructor(private utilService: UtilService) { }
 
   newGame() {
+    this.clearAllIntervals()
     this.game = this._createGame()
     this.player = null
     this.game.isGameOn = true
-    if (this.player && !this.game.isPlayerNext) this.machineTurn()
   }
 
   restart() {
+    this.clearAllIntervals()
     this.game = this._createGame()
     this.game.isGameOn = true
     if (this.player && !this.game.isPlayerNext) this.machineTurn()
   }
 
   machineTurn() {
-    setTimeout(() => {
-      console.log("hi from machine turn with sleep");
+    this.game.timeOut = setTimeout(() => {
       const possibleMoves = this._getPossibleMoves()
       const idx = this.utilService.getRandomIntInclusive(0, possibleMoves.length - 1)
       this.doMove(possibleMoves[idx])
     }, 500)
+  }
+
+  clearAllIntervals() {
+    if (this.game?.timeOut) clearTimeout(this.game.timeOut)
   }
 
   doMove(idx: number) {
@@ -75,7 +80,9 @@ export class TicTacToeService {
   // =================================================================
   // ======================= Private Functions =======================
   // =================================================================
+  // TODO: add ngOnDestroy?, and run clearTimeout on it.
   private _endGame(winner: 'X' | 'O' | 'tie') {
+    this.clearAllIntervals()
     this.game.isWin = true
     this.game.isGameOn = false
     this.game.winner = winner
@@ -87,7 +94,8 @@ export class TicTacToeService {
       board: Array(9).fill(null),
       isPlayerNext: this.utilService.getRandBool(),
       isWin: false,
-      winner: null
+      winner: null,
+      timeOut: null
     }
   }
 
