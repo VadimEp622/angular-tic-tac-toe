@@ -80,7 +80,6 @@ export class TicTacToeService {
   // =================================================================
   // ======================= Private Functions =======================
   // =================================================================
-  // TODO: add ngOnDestroy?, and run clearTimeout on it.
   private _endGame(winner: 'X' | 'O' | 'tie') {
     this.clearAllIntervals()
     this.game.isWin = true
