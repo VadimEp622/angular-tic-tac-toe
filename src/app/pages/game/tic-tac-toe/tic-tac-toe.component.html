@@ -1,10 +1,12 @@
 <section class="tic-tac-toe pd-bl-20">
-    <h2 class="text-align-center">Welcome to Tic-Tac-Toe</h2>
-    <button (click)="ticTacToeService.restart()">New game</button>
+    <h2 class="text-align-center pd-bl-ed-10">Welcome to Tic-Tac-Toe</h2>
+    <section class="width-300 pd-bl-10 mg-in-auto">
+        <button (click)="ticTacToeService.restart()">New game</button>
+    </section>
 
     <section
         *ngIf="!ticTacToeService.getPlayer(); else board"
-        class="flex gap20 pd-bl-10"
+        class="flex gap20 pd-bl-10 width-300 mg-in-auto"
     >
         <h3>Please pick a side:</h3>
         <section class="flex gap10">
@@ -18,7 +20,7 @@
     </section>
 
     <ng-template #board>
-        <section class="pd-bl-10 flex space-between gap40">
+        <section class="pd-bl-10 flex space-between gap40 width-300 mg-in-auto">
             <h3>You are: {{ ticTacToeService.getPlayer() }}</h3>
             <h3 *ngIf="!ticTacToeService.getGame().isWin; else whoWins">Next is: {{ ticTacToeService.getWhoIsNext() }}
             </h3>

@@ -22,10 +22,14 @@ export class TicTacToeComponent implements OnInit {
     this.ticTacToeService.newGame()
   }
 
-  // TODO: add timeout for machine turn
+  // TODO: add color pallete to scss _variables.scss for the tic-tac-toe game
+  // TODO: when it is not user's turn, and user hovers over the game, mouse cursor should change to show => please wait, machine is thinking...
+  // TODO: add colors to 'X' and 'O', to more easily indentify who's turn it is (AFTER! deciding a color pallete for the game)
 
   handleTileClick(idx: number) {
-    this.ticTacToeService.doMove(idx)
+    if (this.ticTacToeService.getGame().isPlayerNext) {
+      this.ticTacToeService.doMove(idx)
+    }
   }
 
   onPlayerPick(player: 'X' | 'O') {
