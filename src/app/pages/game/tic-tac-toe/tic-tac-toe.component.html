@@ -22,7 +22,11 @@
             <h3>You are: {{ player }}</h3>
             <h3 *ngIf="!isWin; else whoWins">Next is: {{ getWhoIsNext() }}</h3>
             <ng-template #whoWins>
-                <h3>{{winner}} Wins!</h3>
+                <!-- <h3>{{winner}} Wins!</h3> -->
+                <h3>{{winner === 'tie' ? 'Tie!' : (winner + ' Wins!')}}</h3>
+
+                <!-- <p>{{ dynamicData?.value ? ('Dynamic data value is equal: ' + dynamicData?.value) : 'no dynamic data'}}</p> -->
+
             </ng-template>
         </section>
         <board

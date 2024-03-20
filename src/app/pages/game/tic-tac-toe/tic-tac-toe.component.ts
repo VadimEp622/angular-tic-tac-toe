@@ -19,14 +19,13 @@ export class TicTacToeComponent implements OnInit {
   isPlayerNext!: boolean
   tileList: ('X' | 'O' | null)[] = []
   isWin: boolean = false
-  winner: 'X' | 'O' | null = null
+  winner: 'X' | 'O' | 'tie' | null = null
 
   constructor(public utilService: UtilService) { }
 
 
   ngOnInit() {
     this.onNewGame()
-    // if (!this.isPlayerNext) this.machineTurn()
   }
 
 
@@ -64,6 +63,7 @@ export class TicTacToeComponent implements OnInit {
   }
 
   checkWin() {
+    if (this.checkIsBoardFull()) return 'tie'
     const possibleWins = [
       [0, 1, 2],
       [3, 4, 5],
@@ -88,7 +88,11 @@ export class TicTacToeComponent implements OnInit {
     return null
   }
 
-  endGame(winner: 'X' | 'O') {
+  checkIsBoardFull() {
+    return !this.tileList.includes(null)
+  }
+
+  endGame(winner: 'X' | 'O' | 'tie') {
     this.isWin = true
     this.isGameOn = false
     this.winner = winner
