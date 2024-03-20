@@ -28,7 +28,7 @@ export class TicTacToeComponent implements OnInit {
     this.onNewGame()
   }
 
-
+  // TODO: add timeout for machine turn
   onNewGame() {
     this.isGameOn = true
     this.isPlayerNext = this.utilService.getRandBool()
