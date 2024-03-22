@@ -1,9 +1,9 @@
-# AngularTicTacToe
+# Angular Tic-Tac-Toe
 
-This project is a simple SPA written in angular, with the game tic-tac-toe inside it.
-- The game is build using MVC principle, with a service instance responsiple for state and logic, a component responsible for listening to user input and connecting with the service, and an HTML DOM that is being rendered onto.
-- This project is build to be scalable.
-- The project's routes are lazy loaded.
+This project is a simple SPA written in angular, with the game Tic-Tac-Toe inside it.
+- The game is build using **MVC** principle, with a service instance responsiple for state and logic, a component responsible for listening to user input and connecting with the service, and an HTML DOM that is being rendered onto.
+- This project is build to be **scalable**.
+- The project's routes are **lazy loaded**.
 
 # Sneakpeek
 
