@@ -1,27 +1,26 @@
 # AngularTicTacToe
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.3.
+This project is a simple SPA written in angular, with the game tic-tac-toe inside it.
+- The game is build using MVC principle, with a service instance responsiple for state and logic, a component responsible for listening to user input and connecting with the service, and an HTML DOM that is being rendered onto.
+- This project is build to be scalable.
+- The project's routes are lazy loaded.
 
-## Development server
+# Sneakpeek
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+![mainRoutes](https://github.com/VadimEp622/angular-tic-tac-toe/assets/118854398/afd5e290-abf2-4d00-8336-f7e9b54040e0)
 
-## Code scaffolding
+A) The routes are devided into: 
+- /
+  - /
+- /about
+  - /
+- /game
+  - /tic-tac-toe
+  - /insert-game-name-here
+- /**
+  - /
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+B) Each main route has its own layout wrapper, which allows for dynamic wrapping, using a layoutService that tracks current route.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+C) Homepage route has a scaleable nav list which redirects to each specific game (/game/insert-game-name-here) the project may have.
