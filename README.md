@@ -1,4 +1,5 @@
 # Angular Tic-Tac-Toe
+Link: [**Angular Tic-Tac-Toe**](https://vadimep622.github.io/angular-tic-tac-toe/)
 
 This project is a simple SPA written in angular, with the game Tic-Tac-Toe inside it.
 - The game is build using **MVC** principle, with a service instance responsiple for state and logic, a component responsible for listening to user input and connecting with the service, and an HTML DOM that is being rendered onto.
