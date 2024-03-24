@@ -76,6 +76,7 @@ $map-spacing: (
 // ************** Padding Map **************
 $map-padding: (
     "0": map-get($map-spacing, "0"),
+    "5": map-get($map-spacing, "5"),
     "10": map-get($map-spacing, "10")
 );
 
